@@ -22,9 +22,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-
-
-
 using UnityEngine;
 using System;
 using System.Collections.Generic;
@@ -92,8 +89,7 @@ public enum LeanTweenType
 
 /// <summary>
 /// LeanTween is an efficient tweening engine for Unity3d<br><br>
-/// <summary>
-
+/// </summary>
 public class LeanTween : MonoBehaviour
 {
 
@@ -111,7 +107,7 @@ public class LeanTween : MonoBehaviour
     public static float dtEstimated = -1f;
     public static float dtManual;
 #if UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2 || UNITY_4_3 || UNITY_4_5
-    private static float previousRealTime;
+private static float previousRealTime;
 #endif
     public static float dtActual;
     private static int i;
@@ -143,7 +139,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Find out how many tweens you have animating at a given time
-    /// <summary>
+    /// </summary>
     public static int tweensRunning
     {
         get
@@ -162,7 +158,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// This line is optional. Here you can specify the maximum number of tweens you will use (the default is 400).  This must be called before any use of LeanTween is made for it to be effective.
-    /// <summary>
+    /// </summary>
     /// <param name="maxSimultaneousTweens">The maximum number of tweens you will use, make sure you don't go over this limit, otherwise the code will throw an error</param>
     public static void init(int maxSimultaneousTweens)
     {
@@ -176,7 +172,7 @@ public class LeanTween : MonoBehaviour
             _tweenEmpty.AddComponent(typeof(LeanTween));
             _tweenEmpty.isStatic = true;
 #if !UNITY_EDITOR
-            _tweenEmpty.hideFlags = HideFlags.HideAndDontSave;
+_tweenEmpty.hideFlags = HideFlags.HideAndDontSave;
 #endif
             DontDestroyOnLoad(_tweenEmpty);
             for (int i = 0; i < maxTweens; i++)
@@ -185,7 +181,7 @@ public class LeanTween : MonoBehaviour
             }
 
 #if UNITY_5_4_OR_NEWER
-            UnityEngine.SceneManagement.SceneManager.sceneLoaded += onLevelWasLoaded54;
+UnityEngine.SceneManagement.SceneManager.sceneLoaded += onLevelWasLoaded54;
 #endif
         }
     }
@@ -210,7 +206,7 @@ public class LeanTween : MonoBehaviour
     }
 
 #if UNITY_5_4_OR_NEWER
-    private static void onLevelWasLoaded54( UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode ){ internalOnLevelWasLoaded( scene.buildIndex ); }
+private static void onLevelWasLoaded54( UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode ){ internalOnLevelWasLoaded( scene.buildIndex ); }
 #else
     public void OnLevelWasLoaded(int lvl) { internalOnLevelWasLoaded(lvl); }
 #endif
@@ -230,10 +226,10 @@ public class LeanTween : MonoBehaviour
             init();
 
 #if UNITY_3_5 || UNITY_4_0 || UNITY_4_0_1 || UNITY_4_1 || UNITY_4_2 || UNITY_4_3 || UNITY_4_5
-            dtEstimated = Time.realtimeSinceStartup - previousRealTime;
-            if(dtEstimated>0.2f) // a catch put in, when at the start sometimes this number can grow unrealistically large
-            dtEstimated = 0.2f;
-            previousRealTime = Time.realtimeSinceStartup;
+dtEstimated = Time.realtimeSinceStartup - previousRealTime;
+if(dtEstimated>0.2f) // a catch put in, when at the start sometimes this number can grow unrealistically large
+dtEstimated = 0.2f;
+previousRealTime = Time.realtimeSinceStartup;
 #else
 
             dtEstimated = dtEstimated < 0f ? 0f : dtEstimated = Time.unscaledDeltaTime;
@@ -362,7 +358,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Cancels all tweens
-    /// <summary>
+    /// </summary>
     /// <param name="callComplete">(optional) if true, then the all onCompletes will run before canceling</param>
     public static void cancelAll()
     {
@@ -384,7 +380,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Cancel all tweens that are currently targeting the gameObject
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">gameObject whose tweens you wish to cancel</param>
     /// <param name="callOnComplete">(optional) whether to call the onComplete method before canceling</param>
     public static void cancel(GameObject gameObject)
@@ -434,7 +430,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Cancel a specific tween with the provided id
-    /// <summary>
+    /// </summary>
     /// <param name="id">unique id that represents that tween</param>
     /// <param name="callOnComplete">(optional) whether to call the onComplete method before canceling</param>
     public static void cancel(int uniqueId)
@@ -460,7 +456,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Retrieve a tweens LTDescr object to modify
-    /// <summary>
+    /// </summary>
     /// <param name="id">unique id that represents that tween</param>
     public static LTDescr descr(int uniqueId)
     {
@@ -484,7 +480,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Retrieve a tweens LTDescr object(s) to modify
-    /// <summary>
+    /// </summary>
     /// <param name="id">object whose tween descriptions you want to retrieve</param>
     public static LTDescr[] descriptions(GameObject gameObject = null)
     {
@@ -508,7 +504,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Pause all tweens for a GameObject
-    /// <summary>
+    /// </summary>
     /// <param name="id">Id of the tween you want to pause</param>
     public static void pause(int uniqueId)
     {
@@ -522,7 +518,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Pause all tweens for a GameObject
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">GameObject whose tweens you want to pause</param>
     public static void pause(GameObject gameObject)
     {
@@ -538,7 +534,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Pause all active tweens
-    /// <summary>
+    /// </summary>
     public static void pauseAll()
     {
         init();
@@ -550,7 +546,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Resume all active tweens
-    /// <summary>
+    /// </summary>
     public static void resumeAll()
     {
         init();
@@ -568,7 +564,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Resume a specific tween
-    /// <summary>
+    /// </summary>
     /// <param name="id">Id of the tween you want to resume</param>
     public static void resume(int uniqueId)
     {
@@ -582,7 +578,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Resume all the tweens on a GameObject
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">GameObject whose tweens you want to resume</param>
     public static void resume(GameObject gameObject)
     {
@@ -596,7 +592,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Test whether or not a tween is active on a GameObject
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">GameObject that you want to test if it is tweening</param>
     public static bool isTweening(GameObject gameObject = null)
     {
@@ -620,7 +616,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Test whether or not a tween is active or not
-    /// <summary>
+    /// </summary>
     /// <param name="id">id of the tween that you want to test if it is tweening</param>
     public static bool isTweening(int uniqueId)
     {
@@ -771,7 +767,7 @@ public class LeanTween : MonoBehaviour
 #if !UNITY_3_5 && !UNITY_4_0 && !UNITY_4_0_1 && !UNITY_4_1 && !UNITY_4_2 && !UNITY_4_3 && !UNITY_4_5
     /// <summary>
     /// Play a sequence of images on a Unity UI Object
-    /// <summary>
+    /// </summary>
     /// <param name="rectTransform">RectTransform that you want to play the sequence of sprites on</param>
     /// <param name="sprites">Sequence of sprites to be played</param>
     /// <returns>LTDescr an object that distinguishes the tween</returns>
@@ -785,7 +781,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Fade a gameobject's material to a certain alpha value. The material's shader needs to support alpha. <a href="http://owlchemylabs.com/content/">Owl labs has some excellent efficient shaders</a>.
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">Gameobject that you wish to fade</param>
     /// <param name="to">the final alpha value (0-1)</param>
     /// <param name="time">The time with which to fade the object</param>
@@ -803,7 +799,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Fade a GUI Object
-    /// <summary>
+    /// </summary>
     /// <param name="ltRect">LTRect that you wish to fade</param>
     /// <param name="to">the final alpha value (0-1)</param>
     /// <param name="time">The time with which to fade the object</param>
@@ -818,7 +814,7 @@ public class LeanTween : MonoBehaviour
 #if !UNITY_3_5 && !UNITY_4_0 && !UNITY_4_0_1 && !UNITY_4_1 && !UNITY_4_2 && !UNITY_4_3 && !UNITY_4_5
     /// <summary>
     /// Fade a Unity UI Object
-    /// <summary>
+    /// </summary>
     /// <param name="rectTransform">RectTransform associated with the Text Component you wish to fade</param>
     /// <param name="to">the final alpha value (0-1)</param>
     /// <param name="time">The time with which to fade the object</param>
@@ -834,7 +830,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Fade a Unity UI Canvas Group
-    /// <summary>
+    /// </summary>
     /// <param name="rectTransform">RectTransform that the CanvasGroup is attached to</param>
     /// <param name="to">the final alpha value (0-1)</param>
     /// <param name="time">The time with which to fade the object</param>
@@ -847,7 +843,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// This works by tweening the vertex colors directly.<br>
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">Gameobject that you wish to alpha</param>
     /// <param name="to">The alpha value you wish to tween to</param>
     /// <param name="time">The time with which to delay before calling the function</param>
@@ -859,7 +855,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Change a gameobject's material to a certain color value. The material's shader needs to support color tinting. <a href="http://owlchemylabs.com/content/">Owl labs has some excellent efficient shaders</a>.
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">Gameobject that you wish to change the color</param>
     /// <param name="to">the final color value ex: Color.Red, new Color(1.0f,1.0f,0.0f,0.8f)</param>
     /// <param name="time">The time with which to fade the object</param>
@@ -877,7 +873,7 @@ public class LeanTween : MonoBehaviour
 #if !UNITY_3_5 && !UNITY_4_0 && !UNITY_4_0_1 && !UNITY_4_1 && !UNITY_4_2 && !UNITY_4_3 && !UNITY_4_5
     /// <summary>
     /// Change the color a Unity UI Object
-    /// <summary>
+    /// </summary>
     /// <param name="rectTransform">RectTransform attached to the Text Component whose color you want to change</param>
     /// <param name="to">the final alpha value ex: Color.Red, new Color(1.0f,1.0f,0.0f,0.8f)</param>
     /// <param name="time">The time with which to fade the object</param>
@@ -894,7 +890,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Call a method after a specified amount of time
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">Gameobject that you wish to associate with this delayed call</param>
     /// <param name="time">delay The time you wish to pass before the method is called</param>
     /// <returns>LTDescr an object that distinguishes the tween</returns>
@@ -926,7 +922,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Move a GameObject to a certain location
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">Gameobject that you wish to move</param>
     /// <param name="vec">to The final positin with which to move to</param>
     /// <param name="time">time The time to complete the tween in</param>
@@ -943,7 +939,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Move a GameObject along a set of bezier curves
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">Gameobject that you wish to move</param>
     /// <param name="path">A set of points that define the curve(s) ex: Point1,Handle2,Handle1,Point2,...</param>
     /// <param name="time">The time to complete the tween in</param>
@@ -977,7 +973,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Move a GameObject through a set of points
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">Gameobject that you wish to move</param>
     /// <param name="path">A set of points that define the curve(s) ex: ControlStart,Pt1,Pt2,Pt3,.. ..ControlEnd<br>Note: The first and last item just define the angle of the end points, they are not actually used in the spline path itself. If you do not care about the angle you can jus set the first two items and last two items as the same value.</param>
     /// <param name="time">The time to complete the tween in</param>
@@ -992,7 +988,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Move a GameObject through a set of points
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">Gameobject that you wish to move</param>
     /// <param name="spline">pass a pre-existing LTSpline for the object to move along</param>
     /// <param name="time">The time to complete the tween in</param>
@@ -1007,7 +1003,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Move a GameObject through a set of points, in local space
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">Gameobject that you wish to move</param>
     /// <param name="path">A set of points that define the curve(s) ex: ControlStart,Pt1,Pt2,Pt3,.. ..ControlEnd</param>
     /// <param name="time">The time to complete the tween in</param>
@@ -1022,7 +1018,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Move a GUI Element to a certain location
-    /// <summary>
+    /// </summary>
     /// <param name="ltRect">ltRect LTRect object that you wish to move</param>
     /// <param name="vec">to The final position with which to move to (pixel coordinates)</param>
     /// <param name="time">time The time to complete the tween in</param>
@@ -1039,7 +1035,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Move a GameObject along the x-axis
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">gameObject Gameobject that you wish to move</param>
     /// <param name="to">to The final position with which to move to</param>
     /// <param name="time">time The time to complete the move in</param>
@@ -1051,7 +1047,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Move a GameObject along the y-axis
-    /// <summary>
+    /// </summary>
     /// <returns>LTDescr an object that distinguishes the tween</returns>
     public static LTDescr moveY(GameObject gameObject, float to, float time)
     {
@@ -1060,7 +1056,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Move a GameObject along the z-axis
-    /// <summary>
+    /// </summary>
     /// <returns>LTDescr an object that distinguishes the tween</returns>
     public static LTDescr moveZ(GameObject gameObject, float to, float time)
     {
@@ -1069,7 +1065,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Move a GameObject to a certain location relative to the parent transform.
-    /// <summary>
+    /// </summary>
     /// <returns>LTDescr an object that distinguishes the tween</returns>
     public static LTDescr moveLocal(GameObject gameObject, Vector3 to, float time)
     {
@@ -1078,7 +1074,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Move a GameObject along a set of bezier curves, in local space
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">Gameobject that you wish to move</param>
     /// <param name="path">A set of points that define the curve(s) ex: Point1,Handle1,Handle2,Point2,...</param>
     /// <param name="time">The time to complete the tween in</param>
@@ -1126,7 +1122,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Move a GameObject to another transform
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">Gameobject that you wish to move</param>
     /// <param name="destination">Transform whose position the tween will finally end on</param>
     /// <param name="time">time The time to complete the tween in</param>
@@ -1138,7 +1134,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Rotate a GameObject, to values are in passed in degrees
-    /// <summary>
+    /// </summary>
     /// <returns>LTDescr an object that distinguishes the tween</returns>
 
     public static LTDescr rotate(GameObject gameObject, Vector3 to, float time)
@@ -1148,7 +1144,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Rotate a GUI element (using an LTRect object), to a value that is in degrees
-    /// <summary>
+    /// </summary>
     /// <param name="ltRect">LTRect that you wish to rotate</param>
     /// <param name="to">The final rotation with which to rotate to</param>
     /// <param name="time">The time to complete the tween in</param>
@@ -1161,7 +1157,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Rotate a GameObject in the objects local space (on the transforms localEulerAngles object)
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">Gameobject that you wish to rotate</param>
     /// <param name="to">The final rotation with which to rotate to</param>
     /// <param name="time">The time to complete the rotation in</param>
@@ -1173,7 +1169,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Rotate a GameObject only on the X axis
-    /// <summary>
+    /// </summary>
     /// <param name="to">The final x-axis rotation with which to rotate</param>
     /// <param name="time">The time to complete the rotation in</param>
     /// <returns>LTDescr an object that distinguishes the tween</returns>
@@ -1184,7 +1180,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Rotate a GameObject only on the Y axis
-    /// <summary>
+    /// </summary>
     /// <param name="to">The final y-axis rotation with which to rotate</param>
     /// <param name="time">The time to complete the rotation in</param>
     /// <returns>LTDescr an object that distinguishes the tween</returns>
@@ -1195,7 +1191,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Rotate a GameObject only on the Z axis
-    /// <summary>
+    /// </summary>
     /// <param name="to">The final z-axis rotation with which to rotate</param>
     /// <param name="time">The time to complete the rotation in</param>
     /// <returns>LTDescr an object that distinguishes the tween</returns>
@@ -1206,7 +1202,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Rotate a GameObject around a certain Axis (the best method to use when you want to rotate beyond 180 degrees)
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">Gameobject that you wish to rotate</param>
     /// <param name="vec">axis in which to rotate around ex: Vector3.up</param>
     /// <param name="degrees">the degrees in which to rotate</param>
@@ -1219,7 +1215,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Rotate a GameObject around a certain Axis in Local Space (the best method to use when you want to rotate beyond 180 degrees)
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">Gameobject that you wish to rotate</param>
     /// <param name="vec">axis in which to rotate around ex: Vector3.up</param>
     /// <param name="degrees">the degrees in which to rotate</param>
@@ -1232,7 +1228,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Scale a GameObject to a certain size
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">gameObject Gameobject that you wish to scale</param>
     /// <param name="vec">to The size with which to tween to</param>
     /// <param name="time">time The time to complete the tween in</param>
@@ -1244,7 +1240,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Scale a GUI Element to a certain width and height
-    /// <summary>
+    /// </summary>
     /// <returns>LTDescr an object that distinguishes the tween</returns>
     public static LTDescr scale(LTRect ltRect, Vector2 to, float time)
     {
@@ -1253,7 +1249,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Scale a GameObject to a certain size along the x-axis only
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">Gameobject that you wish to scale</param>
     /// <param name="scaleTo">the size with which to scale to</param>
     /// <param name="time">the time to complete the tween in</param>
@@ -1265,7 +1261,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Scale a GameObject to a certain size along the y-axis only
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">Gameobject that you wish to scale</param>
     /// <param name="scaleTo">the size with which to scale to</param>
     /// <param name="time">the time to complete the tween in</param>
@@ -1277,7 +1273,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Scale a GameObject to a certain size along the z-axis only
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">Gameobject that you wish to scale</param>
     /// <param name="scaleTo">the size with which to scale to</param>
     /// <param name="time">the time to complete the tween in</param>
@@ -1289,7 +1285,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Tween any particular value (float)
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">Gameobject that you wish to attach the tween to</param>
     /// <param name="from">The original value to start the tween from</param>
     /// <param name="to">The final float with which to tween to</param>
@@ -1306,7 +1302,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Tween any particular value (Vector2)
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">Gameobject that you wish to attach the tween to</param>
     /// <param name="from">The original value to start the tween from</param>
     /// <param name="to">The final Vector2 with which to tween to</param>
@@ -1319,7 +1315,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Tween any particular value (Vector3)
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">Gameobject that you wish to attach the tween to</param>
     /// <param name="from">The original value to start the tween from</param>
     /// <param name="to">The final Vector3 with which to tween to</param>
@@ -1332,7 +1328,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Tween any particular value (Color)
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">Gameobject that you wish to attach the tween to</param>
     /// <param name="from">The original value to start the tween from</param>
     /// <param name="to">The final Color with which to tween to</param>
@@ -1352,7 +1348,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Tween any particular value, it does not need to be tied to any particular type or GameObject
-    /// <summary>
+    /// </summary>
     /// <param name="callOnUpdate">The function that is called on every Update frame, this function needs to accept a float value ex: function updateValue( float val ){ }</param>
     /// <returns>LTDescr an object that distinguishes the tween</returns>
 
@@ -1363,7 +1359,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Tweens any float value, it does not need to be tied to any particular type or GameObject
-    /// <summary>
+    /// </summary>
     /// <returns>LTDescr an object that distinguishes the tween</returns>
 
     public static LTDescr value(GameObject gameObject, Action<float, float> callOnUpdateRatio, float from, float to, float time)
@@ -1373,7 +1369,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Tween from one color to another
-    /// <summary>
+    /// </summary>
     /// <param name="callOnUpdate">The function that is called on every Update frame, this function needs to accept a color value ex: function updateValue( Color val ){ }</param>
     /// <returns>LTDescr an object that distinguishes the tween</returns>
 
@@ -1390,7 +1386,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Tween any particular value (Vector2), this could be used to tween an arbitrary value like offset property
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">Gameobject that you wish to attach the tween to</param>
     /// <param name="callOnUpdate">The function that is called on every Update frame, this function needs to accept a float value ex: function updateValue( Vector3 val ){ }</param>
     /// <param name="from">The original value to start the tween from</param>
@@ -1404,7 +1400,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Tween any particular value (Vector3), this could be used to tween an arbitrary property that uses a Vector
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">Gameobject that you wish to attach the tween to</param>
     /// <param name="callOnUpdate">The function that is called on every Update frame, this function needs to accept a float value ex: function updateValue( Vector3 val ){ }</param>
     /// <param name="from">The original value to start the tween from</param>
@@ -1418,7 +1414,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Tween any particular value (float)
-    /// <summary>
+    /// </summary>
     /// <param name="gameObject">Gameobject that you wish to attach the tween to</param>
     /// <param name="callOnUpdate">The function that is called on every Update frame, this function needs to accept a float value ex: function updateValue( Vector3 val, object obj ){ }</param>
     /// <param name="from">The original value to start the tween from</param>
@@ -1446,7 +1442,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Move a RectTransform object (used in Unity GUI in 4.6+, for Buttons, Panel, Scrollbar, etc...)
-    /// <summary>
+    /// </summary>
     /// <param name="rectTrans">RectTransform that you wish to attach the tween to</param>
     /// <param name="to">The final Vector3 with which to tween to</param>
     /// <param name="time">The time to complete the tween in</param>
@@ -1458,7 +1454,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Move a RectTransform object affecting x-axis only (used in Unity GUI in 4.6+, for Buttons, Panel, Scrollbar, etc...)
-    /// <summary>
+    /// </summary>
     /// <param name="rectTrans">RectTransform that you wish to attach the tween to</param>
     /// <param name="to">The final x location with which to tween to</param>
     /// <param name="time">The time to complete the tween in</param>
@@ -1470,7 +1466,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Move a RectTransform object affecting y-axis only (used in Unity GUI in 4.6+, for Buttons, Panel, Scrollbar, etc...)
-    /// <summary>
+    /// </summary>
     /// <param name="rectTrans">RectTransform that you wish to attach the tween to</param>
     /// <param name="to">The final y location with which to tween to</param>
     /// <param name="time">The time to complete the tween in</param>
@@ -1482,7 +1478,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Move a RectTransform object affecting z-axis only (used in Unity GUI in 4.6+, for Buttons, Panel, Scrollbar, etc...)
-    /// <summary>
+    /// </summary>
     /// <param name="rectTrans">RectTransform that you wish to attach the tween to</param>
     /// <param name="to">The final x location with which to tween to</param>
     /// <param name="time">The time to complete the tween in</param>
@@ -1494,7 +1490,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Rotate a RectTransform object (used in Unity GUI in 4.6+, for Buttons, Panel, Scrollbar, etc...)
-    /// <summary>
+    /// </summary>
     /// <param name="rectTrans">RectTransform that you wish to attach the tween to</param>
     /// <param name="to">The degree with which to rotate the RectTransform</param>
     /// <param name="time">The time to complete the tween in</param>
@@ -1511,7 +1507,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Rotate a RectTransform object (used in Unity GUI in 4.6+, for Buttons, Panel, Scrollbar, etc...)
-    /// <summary>
+    /// </summary>
     /// <param name="rectTrans">RectTransform that you wish to attach the tween to</param>
     /// <param name="axis">The axis in which to rotate the RectTransform (Vector3.forward is most commonly used)</param>
     /// <param name="to">The degree with which to rotate the RectTransform</param>
@@ -1524,7 +1520,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Rotate a RectTransform object around it's local axis (used in Unity GUI in 4.6+, for Buttons, Panel, Scrollbar, etc...)
-    /// <summary>
+    /// </summary>
     /// <param name="rectTrans">RectTransform that you wish to attach the tween to</param>
     /// <param name="axis">The local axis in which to rotate the RectTransform (Vector3.forward is most commonly used)</param>
     /// <param name="to">The degree with which to rotate the RectTransform</param>
@@ -1537,7 +1533,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Scale a RectTransform object (used in Unity GUI in 4.6+, for Buttons, Panel, Scrollbar, etc...)
-    /// <summary>
+    /// </summary>
     /// <param name="rectTrans">RectTransform that you wish to attach the tween to</param>
     /// <param name="to">The final Vector3 with which to tween to (localScale)</param>
     /// <param name="time">The time to complete the tween in</param>
@@ -1549,7 +1545,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Change the sizeDelta of a RectTransform object (used in Unity Canvas, for Buttons, Panel, Scrollbar, etc...)
-    /// <summary>
+    /// </summary>
     /// <param name="rectTrans">RectTransform that you wish to attach the tween to</param>
     /// <param name="to">The final Vector2 the tween will end at for sizeDelta property</param>
     /// <param name="time">The time to complete the tween in</param>
@@ -1561,7 +1557,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Alpha an Image Component attached to a RectTransform (used in Unity GUI in 4.6+, for Buttons, Panel, Scrollbar, etc...)
-    /// <summary>
+    /// </summary>
     /// <param name="rectTrans">RectTransform that you wish to attach the tween to</param>
     /// <param name="to">The final Vector3 with which to tween to (localScale)</param>
     /// <param name="time">The time to complete the tween in</param>
@@ -1573,7 +1569,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Change the Color of an Image Component attached to a RectTransform (used in Unity GUI in 4.6+, for Buttons, Panel, Scrollbar, etc...)
-    /// <summary>
+    /// </summary>
     /// <param name="rectTrans">RectTransform that you wish to attach the tween to</param>
     /// <param name="to">The final Vector3 with which to tween to (localScale)</param>
     /// <param name="time">The time to complete the tween in</param>
@@ -2006,7 +2002,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Add a listener method to be called when the appropriate LeanTween.dispatchEvent is called
-    /// <summary>
+    /// </summary>
     /// <param name="caller">the gameObject the listener is attached to</param>
     /// <param name="eventId">a unique int that describes the event (best to use an enum)</param>
     /// <param name="callback">the method to call when the event has been dispatched</param>
@@ -2033,10 +2029,10 @@ public class LeanTween : MonoBehaviour
                 return;
             }
 #if UNITY_FLASH
-            if(goListeners[ point ] == caller && System.Object.ReferenceEquals( eventListeners[ point ], callback)){
-                // Debug.Log("This event is already being listened for.");
-                return;
-            }
+if(goListeners[ point ] == caller && System.Object.ReferenceEquals( eventListeners[ point ], callback)){
+// Debug.Log("This event is already being listened for.");
+return;
+}
 #else
             if (goListeners[point] == caller && System.Object.Equals(eventListeners[point], callback))
             {
@@ -2055,7 +2051,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Remove an event listener you have added
-    /// <summary>
+    /// </summary>
     /// <param name="caller">the gameObject the listener is attached to</param>
     /// <param name="eventId">a unique int that describes the event (best to use an enum)</param>
     /// <param name="callback">the method that was specified to call when the event has been dispatched</param>
@@ -2065,7 +2061,7 @@ public class LeanTween : MonoBehaviour
         {
             int point = eventId * INIT_LISTENERS_MAX + i;
 #if UNITY_FLASH
-            if(goListeners[ point ] == caller && System.Object.ReferenceEquals( eventListeners[ point ], callback) ){
+if(goListeners[ point ] == caller && System.Object.ReferenceEquals( eventListeners[ point ], callback) ){
 #else
             if (goListeners[point] == caller && System.Object.Equals(eventListeners[point], callback))
             {
@@ -2080,7 +2076,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Tell the added listeners that you are dispatching the event
-    /// <summary>
+    /// </summary>
     /// <param name="eventId">a unique int that describes the event (best to use an enum)</param>
     public static void dispatchEvent(int eventId)
     {
@@ -2089,7 +2085,7 @@ public class LeanTween : MonoBehaviour
 
     /// <summary>
     /// Tell the added listeners that you are dispatching the event
-    /// <summary>
+    /// </summary>
     /// <param name="eventId">a unique int that describes the event (best to use an enum)</param>
     /// <param name="data">Pass data to the listener, access it from the listener with *.data on the LTEvent object</param>
     public static void dispatchEvent(int eventId, object data)
@@ -2259,7 +2255,7 @@ public class LTBezierPath
 
     /// <summary>
     /// Retrieve a point along a path
-    /// <summary>
+    /// </summary>
     /// <param name="ratio">ratio of the point along the path you wish to receive (0-1)</param>
     /// <returns>Vector3 position of the point along the path</returns>
     public Vector3 point(float ratio)
@@ -2300,7 +2296,7 @@ public class LTBezierPath
 
     /// <summary>
     /// Place an object along a certain point on the path (facing the direction perpendicular to the path)
-    /// <summary>
+    /// </summary>
     /// <param name="transform">the transform of the object you wish to place along the path</param>
     /// <param name="ratio">ratio of the point along the path you wish to receive (0-1)</param>
     public void place(Transform transform, float ratio)
@@ -2311,7 +2307,7 @@ public class LTBezierPath
 
     /// <summary>
     /// Place an object along a certain point on the path, with it facing a certain direction perpendicular to the path
-    /// <summary>
+    /// </summary>
     /// <param name="transform">the transform of the object you wish to place along the path</param>
     /// <param name="ratio">ratio of the point along the path you wish to receive (0-1)</param>
     /// <param name="rotation">the direction in which to place the transform ex: Vector3.up</param>
@@ -2326,7 +2322,7 @@ public class LTBezierPath
 
     /// <summary>
     /// Place an object along a certain point on the path (facing the direction perpendicular to the path) - Local Space, not world-space
-    /// <summary>
+    /// </summary>
     /// <param name="transform">the transform of the object you wish to place along the path</param>
     /// <param name="ratio">ratio of the point along the path you wish to receive (0-1)</param>
     public void placeLocal(Transform transform, float ratio)
@@ -2336,7 +2332,7 @@ public class LTBezierPath
 
     /// <summary>
     /// Place an object along a certain point on the path, with it facing a certain direction perpendicular to the path - Local Space, not world-space
-    /// <summary>
+    /// </summary>
     /// <param name="transform">the transform of the object you wish to place along the path</param>
     /// <param name="ratio">ratio of the point along the path you wish to receive (0-1)</param>
     /// <param name="rotation">the direction in which to place the transform ex: Vector3.up</param>
@@ -2532,7 +2528,7 @@ public class LTSpline
 
     /// <summary>
     /// Retrieve a point along a path
-    /// <summary>
+    /// </summary>
     /// <param name="point">given a current location it makes the best approximiation of where it is along the path ratio-wise (0-1)</param>
     /// <returns>float of ratio along the path</returns>
     public float ratioAtPoint(Vector3 pt)
@@ -2555,7 +2551,7 @@ public class LTSpline
 
     /// <summary>
     /// Retrieve a point along a path
-    /// <summary>
+    /// </summary>
     /// <param name="ratio">ratio of the point along the path you wish to receive (0-1)</param>
     /// <returns>Vector3 position of the point along the path</returns>
     public Vector3 point(float ratio)
@@ -2591,7 +2587,7 @@ public class LTSpline
 
     /// <summary>
     /// Place an object along a certain point on the path (facing the direction perpendicular to the path)
-    /// <summary>
+    /// </summary>
     /// <param name="transform">the transform of the object you wish to place along the path</param>
     /// <param name="ratio">ratio of the point along the path you wish to receive (0-1)</param>
     public void place(Transform transform, float ratio)
@@ -2601,7 +2597,7 @@ public class LTSpline
 
     /// <summary>
     /// Place an object along a certain point on the path, with it facing a certain direction perpendicular to the path
-    /// <summary>
+    /// </summary>
     /// <param name="transform">the transform of the object you wish to place along the path</param>
     /// <param name="ratio">ratio of the point along the path you wish to receive (0-1)</param>
     /// <param name="rotation">the direction in which to place the transform ex: Vector3.up</param>
@@ -2617,7 +2613,7 @@ public class LTSpline
 
     /// <summary>
     /// Place an object along a certain point on the path (facing the direction perpendicular to the path) - Local Space, not world-space
-    /// <summary>
+    /// </summary>
     /// <param name="transform">the transform of the object you wish to place along the path</param>
     /// <param name="ratio">ratio of the point along the path you wish to receive (0-1)</param>
     public void placeLocal(Transform transform, float ratio)
@@ -2627,7 +2623,7 @@ public class LTSpline
 
     /// <summary>
     /// Place an object along a certain point on the path, with it facing a certain direction perpendicular to the path - Local Space, not world-space
-    /// <summary>
+    /// </summary>
     /// <param name="transform">the transform of the object you wish to place along the path</param>
     /// <param name="ratio">ratio of the point along the path you wish to receive (0-1)</param>
     /// <param name="rotation">the direction in which to place the transform ex: Vector3.up</param>
@@ -2805,7 +2801,7 @@ public class LTSpline
 
 /// <summary>
 /// Animate GUI Elements by creating this object and passing the *.rect variable to the GUI method<br><br>
-/// <summary>
+/// </summary>
 /// <param name="x">X location</param>
 /// <param name="y">Y location</param>
 /// <param name="width">Width</param>
@@ -3062,7 +3058,7 @@ public class LTRect : System.Object
 
 /// <summary>
 /// Object that describes the event to an event listener
-/// <summary>
+/// </summary>
 /// <param name="data">Data that has been passed from the dispatchEvent method</param>
 public class LTEvent
 {
