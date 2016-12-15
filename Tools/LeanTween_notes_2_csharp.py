@@ -51,32 +51,38 @@ if __name__ == '__main__':
 
     print 'start'
 
-    filePath = 'LeanTween.cs'
-    ndata = []
-    block = []
-    inBlock = False
-    
-    with open(filePath, 'r') as f:
-	read_data = f.readlines()
-	for line in read_data:
-            line = line.strip()
-            if line.startswith('/*') == True and line.find('*/') == -1: # 同一行的不要
-                inBlock = True
-            elif line.find('*/') != -1 and inBlock == True:
-                hblock = HandleBlock(block)
-                for hline in hblock:
-                    ndata.append(hline)
-                block[:] = []
-                inBlock = False
-                continue
-            
-            if inBlock == False:
-                ndata.append(line)
-            else:
-                block.append(line)
+    filePath = ['LTDescr.cs', 'LeanTween.cs']
 
-    shutil.copy(filePath, filePath + '.back')
+    for fPath in filePath:
 
-    with open(filePath, 'w') as f:
-        for line in ndata:
-            f.write(line + '\n')
+        if os.path.exists(fPath) == False:
+            continue
+        
+        ndata = []
+        block = []
+        inBlock = False
+        
+        with open(fPath, 'r') as f:
+            read_data = f.readlines()
+            for line in read_data:
+                line = line.strip()
+                if line.startswith('/*') == True and line.find('*/') == -1: # 同一行的不要
+                    inBlock = True
+                elif line.find('*/') != -1 and inBlock == True:
+                    hblock = HandleBlock(block)
+                    for hline in hblock:
+                        ndata.append(hline)
+                    block[:] = []
+                    inBlock = False
+                    continue
+                
+                if inBlock == False:
+                    ndata.append(line)
+                else:
+                    block.append(line)
+
+        shutil.copy(fPath, fPath + '.back')
+
+        with open(fPath, 'w') as f:
+            for line in ndata:
+                f.write(line + '\n')
