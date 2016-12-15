@@ -82,7 +82,6 @@ public class GeneralBasics2dCS : MonoBehaviour {
 						LeanTween.rotateAround(rotator, Vector3.forward, -1080f, 12f);
 					}
 				);
-
 				// Jump Up and back down
 				LeanTween.moveLocalY(dude,1.17f,1.2f).setDelay(5f + i*0.2f).setLoopPingPong(1).setEase(LeanTweenType.easeInOutQuad);
 			
