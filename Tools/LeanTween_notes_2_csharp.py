@@ -37,7 +37,7 @@ def HandleBlock(block):
     ret = []
     ret.append('/// <summary>')
     ret.append('/// ' + GetTitle(block))
-    ret.append('/// <summary>')
+    ret.append('/// </summary>')
     for line in block:
         if line.find('* @param') != -1:
             pp = GetParam(line)
