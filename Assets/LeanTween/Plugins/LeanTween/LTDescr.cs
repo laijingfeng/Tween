@@ -1359,7 +1359,7 @@ break;
     }
 
     /// <summary>
-    /// Set the type of easing used for the tween. <br>
+    /// Set the type of easing used for the tween.
     /// </summary>
     /// <param name="easeType">the easing type to use</param>
     /// <returns>LTDescr an object that distinguishes the tween</returns>

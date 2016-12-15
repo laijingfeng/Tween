@@ -88,7 +88,7 @@ public enum LeanTweenType
 }
 
 /// <summary>
-/// LeanTween is an efficient tweening engine for Unity3d<br><br>
+/// LeanTween is an efficient tweening engine for Unity3d
 /// </summary>
 public class LeanTween : MonoBehaviour
 {
